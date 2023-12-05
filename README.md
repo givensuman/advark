@@ -2,7 +2,7 @@
 
 teeny tiny adblocker
 
-<img src="./assets/hedgehog.png" height="200px" width="100%" position="center" />
+<img src="./assets/hedgehog.png" height="200px" align="center" />
 
 Cross-browser adblocking meant to be as lightweight as possible, using over 140k hostnames curated by user [Steven Black](https://github.com/StevenBlack/hosts) that are popular within the PiHole community.
 
