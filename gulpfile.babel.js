@@ -56,27 +56,11 @@ gulp.task("ext", ["manifest", "js"], () => {
   return mergeAll(target);
 });
 
-// -----------------
-// COMMON
-// -----------------
+/**
+ * Common
+ */
 gulp.task("js", () => {
   return buildJS(target);
-});
-
-gulp.task("styles", () => {
-  return gulp
-    .src("src/styles/**/*.scss")
-    .pipe($.plumber())
-    .pipe(
-      $.sass
-        .sync({
-          outputStyle: "expanded",
-          precision: 10,
-          includePaths: ["."],
-        })
-        .on("error", $.sass.logError)
-    )
-    .pipe(gulp.dest(`build/${target}/styles`));
 });
 
 gulp.task("manifest", () => {
@@ -105,9 +89,9 @@ gulp.task("manifest", () => {
     .pipe(gulp.dest(`./build/${target}`));
 });
 
-// -----------------
-// DIST
-// -----------------
+/**
+ * Dist
+ */
 gulp.task("dist", (cb) => {
   $.runSequence("build", "zip", cb);
 });
