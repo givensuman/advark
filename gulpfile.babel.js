@@ -20,7 +20,7 @@ var context = Object.assign({}, generic, specific);
 var manifest = {
   dev: {
     background: {
-      scripts: ["scripts/livereload.js", "scripts/background.js"],
+      scripts: ["scripts/livereload.js", "src/background"],
     },
   },
 
@@ -127,9 +127,9 @@ function buildJS(target) {
     "livereload.js",
   ];
 
-  let tasks = files.map((file) => {
+  let tasks = files.map((name) => {
     return browserify({
-      entries: "src/scripts/" + file,
+      entries: "src/" + name,
       debug: true,
     })
       .transform("babelify", { presets: ["es2015"] })
@@ -153,7 +153,7 @@ function buildJS(target) {
           })
         )
       )
-      .pipe(gulp.dest(`build/${target}/scripts`));
+      .pipe(gulp.dest(`build/${target}`));
   });
 
   return merge.apply(null, tasks);
