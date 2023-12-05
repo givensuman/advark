@@ -14,7 +14,8 @@ class Background {
       },
       {
         urls: [...hosts],
-      }
+      },
+      ["blocking"]
     );
   };
 }
