@@ -52,4 +52,4 @@ This project is licensed under the [MIT](LICENSE.md) Creative Commons License - 
 ### Acknowledgments
 
 - [Steven Black](https://github.com/StevenBlack/hosts) for maintaining hostnames
-- Built from [EmailThis boilerplate](https://github.com/EmailThis/extension-boilerplate)
+- Built from [fregante's boilerplate](https://github.com/fregante/browser-extension-template)

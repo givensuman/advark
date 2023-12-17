@@ -1,47 +1,70 @@
 {
-  "name": "advark",
-  "version": "0.0.2",
-  "description": "teeny tiny adblocker",
-  "scripts": {
-    "chrome-build": "cross-env TARGET=chrome gulp",
-    "opera-build": "cross-env TARGET=opera gulp",
-    "firefox-build": "cross-env TARGET=firefox gulp",
-    "build": "cross-env NODE_ENV=production npm run chrome-build && cross-env NODE_ENV=production npm run opera-build && cross-env NODE_ENV=production npm run firefox-build",
-    "chrome-watch": "cross-env TARGET=chrome gulp watch",
-    "opera-watch": "cross-env TARGET=opera gulp watch",
-    "firefox-watch": "cross-env TARGET=firefox gulp watch",
-    "chrome-dist": "cross-env NODE_ENV=production cross-env TARGET=chrome gulp dist",
-    "opera-dist": "cross-env NODE_ENV=production cross-env TARGET=opera gulp dist",
-    "firefox-dist": "cross-env NODE_ENV=production cross-env TARGET=firefox gulp dist",
-    "dist": "pnpm chrome-dist && pnpm opera-dist && pnpm firefox-dist"
-  },
-  "devDependencies": {
-    "babel-core": "^6.1.2",
-    "babel-preset-es2015": "^6.1.2",
-    "babelify": "^7.3.0",
-    "browserify": "^14.1.0",
-    "cross-env": "^3.2.4",
-    "event-stream": "^3.3.4",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.0",
-    "gulp-clean": "^0.3.1",
-    "gulp-eslint": "^2.0.0",
-    "gulp-if": "^2.0.2",
-    "gulp-livereload": "^3.8.1",
-    "gulp-load-plugins": "^0.5.3",
-    "gulp-merge-json": "^1.0.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-run-sequence": "*",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.5.4",
-    "gulp-zip": "^2.0.3",
-    "preprocessify": "^1.0.1",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
-  },
-  "dependencies": {
-    "mithril": "^2.2.2",
-    "webextension-polyfill": "^0.10.0"
-  }
+	"private": true,
+	"scripts": {
+		"build": "parcel build",
+		"lint": "run-p lint:*",
+		"lint-fix": "run-p 'lint:* -- --fix'",
+		"lint:css": "stylelint source/**/*.css",
+		"lint:js": "xo",
+		"test": "run-p lint:* build",
+		"watch": "parcel watch --no-hmr"
+	},
+	"browserslist": [
+		"last 1 Chrome version",
+		"last 1 Firefox version"
+	],
+	"xo": {
+		"envs": [
+			"browser",
+			"webextensions"
+		],
+		"rules": {
+			"unicorn/prefer-top-level-await": "off"
+		}
+	},
+	"stylelint": {
+		"extends": [
+			"stylelint-config-xo",
+			"stylelint-config-prettier"
+		],
+		"rules": {
+			"function-whitespace-after": null,
+			"media-feature-range-operator-space-after": null,
+			"media-feature-range-operator-space-before": null
+		}
+	},
+	"dependencies": {
+		"mithril": "^2.2.2",
+		"webext-base-css": "^1.4.3",
+		"webext-options-sync": "^4.2.1",
+		"webextension-polyfill": "^0.10.0"
+	},
+	"devDependencies": {
+		"@parcel/config-webextension": "^2.10.0",
+		"npm-run-all": "^4.1.5",
+		"parcel": "^2.10.0",
+		"stylelint": "^15.11.0",
+		"stylelint-config-prettier": "^9.0.5",
+		"stylelint-config-xo": "^0.22.0",
+		"xo": "^0.56.0"
+	},
+	"@parcel/bundler-default": {
+		"minBundles": 10000000
+	},
+	"@parcel/bundler-default-bug": "https://github.com/parcel-bundler/parcel/issues/8071",
+	"targets": {
+		"default": {
+			"source": "source/manifest.json",
+			"distDir": "./distribution",
+			"sourceMap": false
+		}
+	},
+	"webExt": {
+		"sourceDir": "distribution",
+		"run": {
+			"startUrl": [
+				"https://github.com/fregante/browser-extension-template"
+			]
+		}
+	}
 }
