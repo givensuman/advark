@@ -1,0 +1,25 @@
+{
+  "name": "advark",
+  "version": "0.0.0",
+  "description": "teeny tiny adblocker",
+  "homepage_url": "https://github.com/givensuman/advark",
+  "manifest_version": 2,
+  "minimum_chrome_version": "100",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "awesome-extension@notlmn.github.io",
+      "strict_min_version": "100.0"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*"],
+      "js": ["browser-polyfill.js", "./src/background.js"]
+    }
+  ],
+  "permissions": ["webRequest", "webRequestBlocking", "<all_urls>"],
+  "background": {
+    "scripts": ["browser-polyfill.js", "./src/background.js"],
+    "type": "module"
+  }
+}

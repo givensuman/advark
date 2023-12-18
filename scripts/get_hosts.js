@@ -25,7 +25,7 @@ request.get(HOSTS_URL, (err, res, body) => {
       `// Last updated ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}\n`
     );
     file.write("export const hosts = [");
-    hosts.forEach((line) => file.write('"' + line + '",'));
+    hosts.forEach((line) => file.write('"*://' + line + '/*",'));
     file.write("]");
   }
 });
