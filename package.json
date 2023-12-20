@@ -1,20 +1,20 @@
 {
-  "name": "advark",
+  "name": "_advark",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gethosts": "rm -rf hosts/*.js && (cd gethosts && python3 main.py);",
+    "venv": "python3 -m venv ./gethosts/venv",
+    "venv:open": "source ./gethosts/venv/bin/activate",
+    "venv:close": "deactivate",
+    "dev": "web-ext run"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "request": "^2.88.2",
     "web-ext": "^7.9.0"
-  },
-  "dependencies": {
-    "webextension-polyfill": "^0.10.0"
   }
 }

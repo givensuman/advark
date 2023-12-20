@@ -1,0 +1,11 @@
+pihole:
+  attr: https://github.com/StevenBlack/hosts
+  src: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+
+goodbyeads:
+  attr: https://github.com/jerryn70/GoodbyeAds
+  src: https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Hosts/GoodbyeAds.txt
+
+shadyhosts:
+  attr: https://github.com/shreyasminocha/shady-hosts/
+  src: https://raw.githubusercontent.com/shreyasminocha/shady-hosts/main/hosts
